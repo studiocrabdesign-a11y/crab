@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRAB Design Studio — Coming Soon</title>
+<meta name="description" content="CRAB Design Studio — architecture, interiors and design. We're crafting spaces that inspire and endure.">
+<meta name="theme-color" content="#0a0a0a">
+
+<meta property="og:title" content="CRAB Design Studio — Coming Soon">
+<meta property="og:description" content="We're crafting spaces that inspire and endure.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/hero.jpg">
+
+<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- grain overlay -->
+<div class="grain" aria-hidden="true"></div>
+<!-- vignette -->
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="shell">
+
+  <!-- ─────────── HEADER ─────────── -->
+  <header class="header">
+    <a href="#" class="logo" aria-label="CRAB Design Studio">
+      <!-- the supplied logo artwork, used as-is -->
+      <img class="logo-mark" src="assets/logo.png" width="674" height="240"
+           alt="CRAB Design Studio">
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#">Architecture</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="#">Interiors</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="#">Design</a>
+    </nav>
+  </header>
+
+  <!-- ─────────── MAIN ─────────── -->
+  <main class="main">
+
+    <section class="content">
+      <h1 class="title">
+        <span class="line" data-text="COMING"></span>
+        <span class="line" data-text="SOON"></span>
+      </h1>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <p class="tagline">
+        We're crafting spaces<br>
+        that inspire and endure.
+      </p>
+
+      <div class="notify">
+        <label class="notify-label" for="email">Get notified when we launch</label>
+        <form class="form" id="form" novalidate>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="input"
+            placeholder="Enter your email"
+            autocomplete="email"
+            required
+            aria-describedby="form-msg">
+          <button type="submit" class="submit" aria-label="Submit email">
+            <svg viewBox="0 0 32 12" aria-hidden="true">
+              <path d="M0 6 H29 M24 1 L30 6 L24 11" fill="none"
+                    stroke="currentColor" stroke-width="1.1"
+                    stroke-linecap="square" stroke-linejoin="miter"/>
+            </svg>
+          </button>
+        </form>
+        <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ─────────── ARCHITECTURAL PHOTOGRAPH ─────────── -->
+    <section class="scene" aria-hidden="true">
+      <div class="scene-inner" id="scene">
+        <img class="scene-img" src="assets/hero.jpg" width="736" height="644"
+             alt="" decoding="async">
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─────────── FOOTER ─────────── -->
+  <footer class="footer">
+    <ul class="social">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Behance</a></li>
+    </ul>
+    <p class="copyright">&copy; 2026 CRAB Design Studio</p>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,598 @@
+/* ============================================================
+   CRAB Design Studio — Coming Soon
+   ============================================================ */
+
+:root {
+  --bg: #040404;
+  --bg-deep: #000000;
+  --ink: #ffffff;
+  --ink-2: rgba(255, 255, 255, .72);
+  --ink-3: rgba(255, 255, 255, .46);
+  --ink-4: rgba(255, 255, 255, .20);
+  --hair: rgba(255, 255, 255, .14);
+
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --slow: cubic-bezier(.16, 1, .3, 1);
+
+  --pad-x: clamp(1.5rem, 5vw, 5.5rem);
+  --pad-y: clamp(1.75rem, 3.5vh, 3rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+html {
+  -webkit-text-size-adjust: 100%
+}
+
+body {
+  min-height: 100svh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none
+}
+
+ul {
+  list-style: none
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--bg)
+}
+
+:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 4px;
+}
+
+/* ── overlays ───────────────────────────────────────────── */
+
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 100;
+  pointer-events: none;
+  /* keep this low — white noise over near-black lifts the blacks fast */
+  opacity: .055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 7s steps(6) infinite;
+}
+
+@keyframes grain {
+
+  0%,
+  100% {
+    transform: translate(0, 0)
+  }
+
+  20% {
+    transform: translate(-4%, 3%)
+  }
+
+  40% {
+    transform: translate(3%, -4%)
+  }
+
+  60% {
+    transform: translate(-3%, -3%)
+  }
+
+  80% {
+    transform: translate(4%, 2%)
+  }
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 45%, transparent 40%, rgba(0, 0, 0, .7) 100%);
+}
+
+/* ── shell ──────────────────────────────────────────────── */
+
+.shell {
+  position: relative;
+  z-index: 2;
+  min-height: 100svh;
+  padding: var(--pad-y) var(--pad-x);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: clamp(1.5rem, 4vh, 3rem);
+}
+
+/* ── header ─────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.logo-mark {
+  display: block;
+  width: clamp(124px, 12vw, 172px);
+  height: auto;
+  transition: opacity .4s var(--ease);
+}
+
+.logo:hover .logo-mark {
+  opacity: .7
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(.9rem, 1.6vw, 1.5rem);
+  font-size: clamp(.6rem, .72vw, .7rem);
+  font-weight: 400;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.nav a {
+  position: relative;
+  padding-bottom: 3px;
+  transition: color .35s var(--ease);
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .45s var(--slow);
+}
+
+.nav a:hover {
+  color: var(--ink)
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left
+}
+
+.sep {
+  width: 1px;
+  height: 11px;
+  background: var(--ink-4);
+}
+
+/* ── main grid ──────────────────────────────────────────── */
+
+.main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.content {
+  max-width: 34rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── title ──────────────────────────────────────────────── */
+
+.title {
+  font-size: clamp(2.6rem, 6.4vw, 5.4rem);
+  font-weight: 200;
+  line-height: 1.06;
+  letter-spacing: .20em;
+  /* Never use text-indent here: it pushes the whole title off the shared
+     left edge that the rule, tagline, label and form all sit on. */
+  margin-left: 0;
+}
+
+/* the trailing letter-space is stripped from the right, not compensated
+   for by indenting the left */
+.title .line {
+  display: block;
+  white-space: nowrap;
+  margin-right: -.20em
+}
+
+/* per-character reveal (chars injected by JS) */
+.title .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(.42em);
+  animation: charIn .9s var(--slow) forwards;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes charIn {
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+/* ── rule ───────────────────────────────────────────────── */
+
+.rule {
+  width: clamp(28px, 3.4vw, 42px);
+  height: 1px;
+  background: var(--ink);
+  margin: clamp(1.5rem, 3.2vh, 2.4rem) 0 clamp(1.3rem, 2.6vh, 1.9rem);
+  transform-origin: left;
+  animation: ruleIn 1s var(--slow) 1.15s backwards;
+}
+
+@keyframes ruleIn {
+  from {
+    transform: scaleX(0)
+  }
+}
+
+/* ── tagline ────────────────────────────────────────────── */
+
+.tagline {
+  font-size: clamp(.85rem, 1.05vw, .98rem);
+  line-height: 1.75;
+  letter-spacing: .09em;
+  color: var(--ink-2);
+  animation: fadeUp 1s var(--slow) 1.3s backwards;
+}
+
+/* ── notify ─────────────────────────────────────────────── */
+
+.notify {
+  margin-top: clamp(2.2rem, 5.5vh, 4rem);
+  animation: fadeUp 1s var(--slow) 1.45s backwards;
+}
+
+.notify-label {
+  display: block;
+  font-size: clamp(.63rem, .75vw, .72rem);
+  font-weight: 400;
+  letter-spacing: .14em;
+  color: var(--ink-3);
+  margin-bottom: .95rem;
+}
+
+.form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: min(100%, 20rem);
+  border: 1px solid var(--hair);
+  transition: border-color .4s var(--ease), background-color .4s var(--ease);
+}
+
+.form:hover {
+  border-color: rgba(255, 255, 255, .3)
+}
+
+.form:focus-within {
+  border-color: var(--ink);
+  background: rgba(255, 255, 255, .03);
+}
+
+.form.is-error {
+  border-color: rgba(255, 120, 110, .85)
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: .82rem;
+  letter-spacing: .03em;
+  padding: .95rem 1rem;
+}
+
+.input::placeholder {
+  color: var(--ink-4);
+  transition: color .4s var(--ease)
+}
+
+.input:focus {
+  outline: none
+}
+
+.input:focus::placeholder {
+  color: transparent
+}
+
+.submit {
+  flex: none;
+  background: none;
+  border: none;
+  color: var(--ink-3);
+  cursor: pointer;
+  padding: .95rem 1rem;
+  display: grid;
+  place-items: center;
+  transition: color .35s var(--ease);
+}
+
+.submit svg {
+  width: 26px;
+  height: 10px;
+  overflow: visible
+}
+
+.submit svg path {
+  transition: transform .45s var(--slow);
+}
+
+.submit:hover {
+  color: var(--ink)
+}
+
+.submit:hover svg path {
+  transform: translateX(4px)
+}
+
+.form-msg {
+  min-height: 1.2rem;
+  margin-top: .7rem;
+  font-size: .7rem;
+  letter-spacing: .09em;
+  color: var(--ink-3);
+  opacity: 0;
+  transform: translateY(-3px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+
+.form-msg.is-visible {
+  opacity: 1;
+  transform: none
+}
+
+.form-msg.is-error {
+  color: rgba(255, 140, 130, .9)
+}
+
+/* success state — form collapses into a confirmation */
+.notify.is-done .form,
+.notify.is-done .notify-label {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+}
+
+/* ============================================================
+   ARCHITECTURAL PHOTOGRAPH
+   ============================================================ */
+
+.scene {
+  position: relative;
+  height: min(62vh, 520px);
+  overflow: hidden;
+}
+
+.scene-inner {
+  position: absolute;
+  inset: 0;
+  /* slight overscale so the parallax translate never exposes an edge */
+  transform: scale(1.04) translate3d(var(--px, 0px), var(--py, 0px), 0);
+  transition: transform .9s var(--slow);
+  animation: sceneIn 1.6s var(--slow) .3s backwards;
+}
+
+@keyframes sceneIn {
+  from {
+    opacity: 0
+  }
+}
+
+.scene-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 50%;
+  display: block;
+}
+
+/* ── footer ─────────────────────────────────────────────── */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  animation: fadeUp 1s var(--slow) 1.6s backwards;
+}
+
+.social {
+  display: flex;
+  gap: clamp(1.1rem, 2.4vw, 2.2rem);
+  font-size: clamp(.6rem, .72vw, .7rem);
+  font-weight: 400;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.social a {
+  position: relative;
+  padding-bottom: 3px;
+  transition: color .35s var(--ease);
+}
+
+.social a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .45s var(--slow);
+}
+
+.social a:hover {
+  color: var(--ink)
+}
+
+.social a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left
+}
+
+.copyright {
+  font-size: .62rem;
+  letter-spacing: .14em;
+  color: var(--ink-4);
+}
+
+/* ── shared ─────────────────────────────────────────────── */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px)
+  }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* tablet — scene drops below, content full width */
+@media (max-width:900px) {
+  .shell {
+    gap: clamp(2rem, 4vh, 3rem)
+  }
+
+  .main {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: clamp(2.5rem, 6vh, 4rem);
+  }
+
+  .content {
+    max-width: none;
+    order: 1
+  }
+
+  .scene {
+    order: 2;
+    height: min(38vh, 320px)
+  }
+
+  .form {
+    width: min(100%, 24rem)
+  }
+}
+
+/* mobile */
+@media (max-width:600px) {
+  :root {
+    --pad-x: 1.4rem;
+    --pad-y: 1.5rem
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.4rem;
+  }
+
+  .logo-mark {
+    width: 118px
+  }
+
+  .nav {
+    font-size: .58rem;
+    letter-spacing: .18em;
+    gap: .85rem;
+  }
+
+  .title {
+    font-size: clamp(2.1rem, 11.5vw, 3.2rem);
+    letter-spacing: .15em;
+  }
+
+  .title .line {
+    margin-right: -.15em
+  }
+
+  .tagline {
+    font-size: .88rem
+  }
+
+  .notify {
+    margin-top: 2.4rem
+  }
+
+  .form {
+    width: 100%
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.1rem;
+  }
+
+  .social {
+    gap: 1.4rem
+  }
+}
+
+/* very short landscape screens */
+@media (max-height:560px) and (min-width:901px) {
+  .scene {
+    height: min(52vh, 360px)
+  }
+
+  .notify {
+    margin-top: 1.6rem
+  }
+}
+
+/* ── accessibility ──────────────────────────────────────── */
+
+@media (prefers-reduced-motion:reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+
+  .grain {
+    animation: none
+  }
+
+  .scene-inner {
+    transform: none !important
+  }
+}
