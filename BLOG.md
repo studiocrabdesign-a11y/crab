@@ -1,144 +1,133 @@
-# The Journal — how to add and update posts
+# The Journal — publishing & the CMS
 
-The blog is built so the client can **publish and edit posts without ever
-touching code or redeploying the site**. The page reads posts fresh every
-time it loads, so a new post appears the moment it's published.
+The blog is built so the studio can **own its content forever and publish
+without touching code.** This document covers how it works and the one-time
+setup.
 
-There are two ways to run it. Start on **Option 0** (works today), move to
-**Option A** when the client wants to self-serve.
+Chosen approach: **Sveltia CMS** (a git-based editor). Every post is a
+Markdown file in *this repo* — the studio owns the files outright, free, with
+full version history. See "Why this one" at the end for the reasoning.
 
 ---
 
-## How it works (the important idea)
+## How it works
 
-`blog.html` runs `blog.js`, which **fetches the list of posts at page load**
-from whatever source is configured at the top of `blog.js`:
-
-```js
-var SOURCE = {
-  sanity:    { projectId: '', dataset: 'production', apiVersion: '2024-01-01' },
-  localJson: 'blog-posts.json'
-};
+```
+content/posts/*.md        <- the posts (what the CMS writes; the source of truth)
+scripts/build-blog.mjs     -> compiles those into blog-posts.json
+blog-posts.json           <- what the site reads (regenerated automatically)
+blog.html / blog.js       -> render the journal
+admin/                     -> the editor (Sveltia CMS)
+.github/workflows/         -> rebuilds blog-posts.json after each publish
 ```
 
-- If `sanity.projectId` is **blank** → it reads the bundled `blog-posts.json`.
-- If `sanity.projectId` is **filled in** → it reads live from Sanity.
+1. The client opens **crabdesignstudio.com/admin/**, logs in with GitHub.
+2. Writes a post, uploads a cover image, clicks **Publish**.
+3. Sveltia saves a Markdown file to `content/posts/` in the repo.
+4. A GitHub Action recompiles `blog-posts.json` and commits it.
+5. GitHub Pages redeploys (~1 min, automatic). The post is live.
 
-Because the fetch happens in the visitor's browser, **new content shows up on
-the next page refresh — no GitHub commit, no rebuild, no redeploy.**
+The client never sees steps 3–5. To them it's: write → Publish → done.
 
 ---
 
-## Option 0 — the bundled file (works right now)
+## One-time setup (developer, ~30 min)
 
-Posts live in `blog-posts.json`. To add one, add an object to the `posts`
-array:
+### 1. Connect this folder to the GitHub repo
+Right now the repo was populated by uploading the zip. From here on the repo
+is the single source of truth — **stop uploading zips**, push with git instead.
 
-```json
-{
-  "title": "Your headline",
-  "category": "Architecture",
-  "date": "2026-07-01",
-  "image": "assets/blog/your-image.jpg",
-  "excerpt": "One or two sentences shown on the card.",
-  "body": [
-    "First paragraph.",
-    "Second paragraph."
-  ]
-}
+```bash
+git remote add origin https://github.com/OWNER/REPO.git
+git push -u origin main
 ```
 
-**Catch:** editing this file *is* a git commit, i.e. a deployment. Fine for
-you as the developer, not what the client asked for. That's why Option A
-exists. Use Option 0 as the starter content and the safety net.
+### 2. Fill in `admin/config.yml`
+Replace the two placeholders:
+- `repo: OWNER/REPO` → e.g. `crabstudio/crabdesignstudio.com`
+- `base_url:` → the auth relay URL from step 4
+
+### 3. Create a GitHub OAuth App
+GitHub → Settings → Developer settings → **OAuth Apps** → New.
+- Homepage URL: `https://crabdesignstudio.com`
+- Authorization callback URL: your relay's `/callback` (from step 4)
+
+Copy the **Client ID** and **Client Secret**.
+
+### 4. Deploy the free auth relay (keeps the secret out of the public repo)
+Sveltia provides a one-click Cloudflare Worker for this. Deploy it, then set
+two environment variables on the Worker: `GITHUB_CLIENT_ID` and
+`GITHUB_CLIENT_SECRET` from step 3. The secret lives only here, never in the
+repo. Put the Worker's URL into `base_url` in `config.yml`.
+
+> This is why a **public repo is safe**: the only secret in the whole system
+> sits in the Worker's environment, not in any file anyone can read. Publishing
+> still requires logging in as a GitHub user with write access to the repo.
+
+### 5. Add the client as a repo collaborator
+GitHub → repo → Settings → Collaborators → add their GitHub account with
+**Write** access. That is what authorises them to publish — and the only thing
+that does.
+
+### 6. Turn on GitHub Actions + Pages
+- Actions: repo → Settings → Actions → allow workflows (on by default).
+- Pages: Settings → Pages → Deploy from branch `main` (already set for the site).
+
+Done. From now on the client publishes from `/admin/` with zero developer
+involvement and zero manual steps.
 
 ---
 
-## Option A — Sanity (recommended: free, secure, no deploys) ⭐
+## Editing content by hand (fallback)
 
-[Sanity](https://www.sanity.io) gives the client a proper editor (the
-"Studio") in the browser: type a post, upload an image, hit **Publish**. The
-website reads it live. Free tier is far more than a studio blog needs.
+Posts are just Markdown. Anyone can edit `content/posts/*.md` directly in the
+GitHub web editor or locally; the Action rebuilds the JSON on push. To preview
+locally without the Action:
 
-### One-time setup (you, ~20 minutes)
+```bash
+node scripts/build-blog.mjs      # regenerates blog-posts.json
+```
 
-1. Install the tooling and create a project:
-   ```bash
-   npm create sanity@latest -- --template clean --create-project "CRAB Journal" --dataset production
-   ```
-   Note the **Project ID** it prints.
+Front-matter format:
 
-2. In the Studio project, define a `post` schema with these fields:
-   `title` (string), `category` (string), `date` (datetime),
-   `excerpt` (text), `image` (image), `body` (array of block / text).
+```markdown
+---
+title: Your headline
+category: Architecture
+date: 2026-07-01
+image: assets/blog/your-photo.jpg
+excerpt: One or two sentences shown on the card.
+---
+First paragraph.
 
-3. Make the dataset **public-readable** (so the website can read it without a
-   secret): Sanity dashboard → **API** → Datasets → set `production` to
-   *Public*. This exposes **read-only** access. Writing still requires login.
-
-4. Allow the website's domain to query the API:
-   Sanity dashboard → **API** → **CORS origins** → add
-   `https://crabdesignstudio.com` (and `http://localhost:8899` for testing).
-
-5. Deploy the Studio so the client has a URL to log in to:
-   ```bash
-   npx sanity deploy
-   ```
-   Gives something like `https://crab-journal.sanity.studio`.
-
-6. In `blog.js`, set the Project ID:
-   ```js
-   sanity: { projectId: 'YOUR_PROJECT_ID', dataset: 'production', apiVersion: '2024-01-01' }
-   ```
-   Commit that one line once. From then on, **all content changes happen in
-   Sanity with zero further commits.**
-
-### The client's day-to-day (no developer, no deploy)
-
-1. Go to the Studio URL, log in.
-2. **Create** → Post → fill in fields, upload image → **Publish**.
-3. Refresh `crabdesignstudio.com/blog.html` — the post is live.
-
-Editing or deleting a post is the same: change it in the Studio, refresh.
-
-### Why this is secure
-
-- The website only ever **reads** through the public API. There is no
-  password, token, or write key in the site's code — nothing to steal.
-- **Publishing requires logging in** to Sanity. Only invited accounts can
-  write. A stranger reading your `blog.js` can see the project ID (harmless,
-  it's read-only) but cannot post anything.
-- CORS limits API queries to your domain.
+Second paragraph.
+```
 
 ---
 
-## Option B — Google Sheets (simplest, if Sanity feels heavy)
+## Why this one (vs the alternatives)
 
-If the client would rather type into a spreadsheet:
+| | Owns content? | Free | No manual steps for client | Images |
+|---|---|---|---|---|
+| **Sveltia (chosen)** | **Yes — files in own repo** | **Yes** | **Yes** | Good |
+| Sanity (rented) | No — vendor-hosted | Yes | Yes | Excellent |
+| Notion (rented) | No — vendor-hosted | Yes | Yes | Good |
+| Google Form | No — in Drive | Yes | Yes | Weak |
+| Self-hosted WordPress | Yes | No (~$5–15/mo) | Yes | Good |
 
-1. Make a Google Sheet with columns:
-   `title, category, date, image, excerpt, body`.
-2. File → Share → **Publish to web**.
-3. Read it as JSON via a free proxy such as
-   [`opensheet`](https://github.com/benborgers/opensheet):
-   `https://opensheet.elk.sh/SHEET_ID/Sheet1`
-4. Point `blog.js` at that URL (swap the fetch source — I can wire this if you
-   choose it).
+Sveltia was chosen for **long-term control and ownership**: the content is
+plain Markdown in the studio's own repository, so even if the editor tool
+vanished, every post is still there as a readable file. Nothing to migrate,
+no vendor, no cost.
 
-**Trade-offs:** dead simple to edit, but images must be hosted somewhere
-(paste a URL — Google Drive links are awkward), and the `body` becomes one
-long cell. Good for text-light updates, weaker for image-rich posts. For an
-architecture studio that lives on imagery, **Sanity is the better fit.**
+The one trade-off vs a purely runtime-fetched CMS (Sanity/Notion): publishing
+triggers an automatic ~1-minute site rebuild. It's invisible to the client —
+one button — but it is a rebuild. For maximum ownership that's the right price.
 
 ---
 
-## My recommendation
+## Status
 
-Ship on **Option 0** now (already done — three demo posts are live). Set up
-**Option A (Sanity)** before handover so the client can publish on their own.
-It's the only one of these that is genuinely free, needs no redeploys, keeps
-zero secrets in the frontend, and handles images the way a design studio
-needs.
-
-Want me to scaffold the Sanity schema files so setup is copy-paste? Say the
-word.
+Scaffolded on the **`cms` branch**. The content pipeline (Markdown → JSON) is
+built and tested locally. Remaining before go-live: steps 1–6 above (they need
+the GitHub repo + one OAuth app + the auth relay), then merge `cms` → `main`.
