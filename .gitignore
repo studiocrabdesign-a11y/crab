@@ -1,6 +1,6 @@
 # local tooling / not part of the site
 .gstack/
-crab-coming-soon.zip
+*.zip
 node_modules/
 *.log
 
