@@ -739,6 +739,13 @@ ul {
   padding: clamp(1rem, 4vw, 3rem);
 }
 
+/* when closed it must truly be gone — otherwise this full-screen overlay
+   sits invisibly on top and eats clicks meant for the post cards.
+   The [hidden] attribute alone loses to the .reader display rule above. */
+.reader[hidden] {
+  display: none;
+}
+
 .reader__backdrop {
   position: absolute;
   inset: 0;
