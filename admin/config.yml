@@ -3,6 +3,9 @@
 #  Editor lives at:  https://crabdesignstudio.com/admin/
 # ============================================================
 
+# To test locally: open this /admin/ page on localhost in Chrome or Edge and
+# click "Work with Local Repository" — it reads/writes your files directly,
+# no GitHub needed. In production the github backend below is used.
 backend:
   name: github
   repo: OWNER/REPO          # <-- CHANGE THIS to e.g. crabstudio/crabdesignstudio.com
