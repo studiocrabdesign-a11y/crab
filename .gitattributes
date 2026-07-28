@@ -1,0 +1,6 @@
+# Keep text files LF in the repo regardless of OS, so the CMS,
+# the GitHub Action, and local editors all agree.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.zip binary
