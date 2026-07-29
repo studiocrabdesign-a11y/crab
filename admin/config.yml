@@ -10,10 +10,9 @@ backend:
   name: github
   repo: studiocrabdesign-a11y/crab
   branch: main
-  # OAuth login is handled by a small free relay you deploy once
-  # (see BLOG.md "Setup"). This keeps the OAuth secret OUT of the repo.
-  # Until it's set up, use the "Sign In Using Access Token" button instead.
-  base_url: https://YOUR-AUTH-RELAY.workers.dev
+  # OAuth login relay (Cloudflare Worker). Holds the OAuth secret so it
+  # never lives in this public repo. "Sign in with GitHub" routes through it.
+  base_url: https://sveltia-cms-auth.studiocrabdesign.workers.dev
 
 # where uploaded images are stored / referenced from
 media_folder: assets/blog
