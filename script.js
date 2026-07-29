@@ -18,9 +18,9 @@
      addresses locally (nothing is sent), so the page never looks broken.
      ══════════════════════════════════════════════════════════ */
   var EMAILJS = {
-    publicKey:  '',   // e.g. 'AbC12dEfGhIJKlmno'
-    serviceId:  '',   // e.g. 'service_ab12cde'
-    templateId: ''    // e.g. 'template_xy34zwv'
+    publicKey:  '09Dy9d1lAhIkHIUH8',
+    serviceId:  'service_zam1vjc',
+    templateId: 'template_1naf3kp'
   };
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
