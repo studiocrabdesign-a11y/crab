@@ -92,7 +92,7 @@
 
       card.innerHTML =
         '<span class="post__media">' +
-          (post.image ? '<img src="' + esc(post.image) + '" alt="" loading="lazy">' : '') +
+          (post.image ? '<img src="' + esc(assetUrl(post.image)) + '" alt="" loading="lazy">' : '') +
         '</span>' +
         '<span class="post__meta">' + esc(meta) + '</span>' +
         '<span class="post__title">' + esc(post.title || 'Untitled') + '</span>' +
@@ -110,6 +110,16 @@
       .replace(/"/g, '&quot;');
   }
 
+  // The CMS may write image paths with a leading slash (/assets/blog/x.jpg),
+  // which is absolute from the domain root and breaks on a project site served
+  // under /crab/. Strip it so paths stay relative to the page and work both on
+  // the github.io/crab/ URL and on the custom domain root. External URLs pass through.
+  function assetUrl(p) {
+    if (!p) return '';
+    if (/^https?:\/\//i.test(p)) return p;
+    return p.replace(/^\/+/, '');
+  }
+
   /* ── reader overlay ────────────────────────────────────── */
 
   var reader = document.getElementById('reader');
@@ -122,7 +132,7 @@
   function openReader(post) {
     lastFocus = document.activeElement;
 
-    if (post.image) { rImg.src = post.image; rImg.style.display = ''; }
+    if (post.image) { rImg.src = assetUrl(post.image); rImg.style.display = ''; }
     else { rImg.removeAttribute('src'); rImg.style.display = 'none'; }
 
     rMeta.textContent = [post.category, fmtDate(post.date)].filter(Boolean).join('  ·  ');
