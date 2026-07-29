@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- This page lives at /blog/ ; resolve all asset paths from the site root. -->
+<base href="../">
 <title>Journal — CRAB Design Studio</title>
 <meta name="description" content="The CRAB Design Studio journal — notes on architecture, interiors, light and material.">
 <meta name="theme-color" content="#040404">
@@ -28,15 +30,15 @@
 
   <!-- ─────────── HEADER ─────────── -->
   <header class="header">
-    <a href="index.html" class="logo" aria-label="CRAB Design Studio">
+    <a href="./" class="logo" aria-label="CRAB Design Studio">
       <img class="logo-mark" src="assets/logo.png" width="674" height="240"
            alt="CRAB Design Studio">
     </a>
 
     <nav class="nav" aria-label="Primary">
-      <a href="index.html">Home</a>
+      <a href="./">Home</a>
       <span class="sep" aria-hidden="true"></span>
-      <a href="blog.html" aria-current="page">Journal</a>
+      <a href="blog/" aria-current="page">Journal</a>
     </nav>
   </header>
 
