@@ -8,10 +8,11 @@
 # no GitHub needed. In production the github backend below is used.
 backend:
   name: github
-  repo: OWNER/REPO          # <-- CHANGE THIS to e.g. crabstudio/crabdesignstudio.com
+  repo: studiocrabdesign-a11y/crab
   branch: main
   # OAuth login is handled by a small free relay you deploy once
   # (see BLOG.md "Setup"). This keeps the OAuth secret OUT of the repo.
+  # Until it's set up, use the "Sign In Using Access Token" button instead.
   base_url: https://YOUR-AUTH-RELAY.workers.dev
 
 # where uploaded images are stored / referenced from
