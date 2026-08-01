@@ -260,10 +260,29 @@ ul {
   animation: fadeUp 1s var(--slow) 1.3s backwards;
 }
 
-/* ── notify ─────────────────────────────────────────────── */
+/* ── contact: notify (primary) + message dialogue (opt-in) ─ */
+
+.contact {
+  margin-top: clamp(2.2rem, 5.5vh, 4rem);
+  position: relative;
+}
+
+/* both panels share a fade so switching between them is smooth */
+.notify,
+.contact .convo {
+  transition: opacity .3s var(--ease), transform .4s var(--ease);
+}
+
+.notify.is-out,
+.contact .convo.is-out {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+}
+
+/* ── notify (waitlist) ──────────────────────────────────── */
 
 .notify {
-  margin-top: clamp(2.2rem, 5.5vh, 4rem);
   animation: fadeUp 1s var(--slow) 1.45s backwards;
 }
 
@@ -373,13 +392,314 @@ ul {
   color: rgba(255, 140, 130, .9)
 }
 
-/* success state — form collapses into a confirmation */
 .notify.is-done .form,
-.notify.is-done .notify-label {
+.notify.is-done .notify-label,
+.notify.is-done .contact-switch {
   opacity: 0;
   transform: translateY(-6px);
   pointer-events: none;
   transition: opacity .5s var(--ease), transform .5s var(--ease);
+}
+
+/* the subtle opt-in link to the message dialogue */
+.contact-switch {
+  display: inline-block;
+  margin-top: 1.4rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: .74rem;
+  letter-spacing: .02em;
+  color: var(--ink-4);
+  transition: color .35s var(--ease);
+}
+
+.contact-switch span {
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--ink-4);
+  padding-bottom: 2px;
+  transition: color .35s var(--ease), border-color .35s var(--ease);
+}
+
+.contact-switch:hover {
+  color: var(--ink-3);
+}
+
+.contact-switch:hover span {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+/* ── guided contact dialogue (opt-in) ───────────────────── */
+
+.convo {
+  width: min(100%, 25rem);
+}
+
+.convo__leave {
+  display: inline-block;
+  margin-bottom: 1.3rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: .66rem;
+  letter-spacing: .1em;
+  color: var(--ink-4);
+  transition: color .3s var(--ease);
+}
+
+.convo__leave:hover {
+  color: var(--ink-2);
+}
+
+.convo__eyebrow {
+  font-size: clamp(.63rem, .75vw, .72rem);
+  font-weight: 400;
+  letter-spacing: .14em;
+  color: var(--ink-3);
+  margin-bottom: 1.1rem;
+}
+
+.convo__stage {
+  transition: opacity .4s var(--ease), transform .5s var(--ease);
+}
+
+.convo__stage.is-out {
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+}
+
+.convo__count {
+  display: block;
+  font-size: .6rem;
+  letter-spacing: .24em;
+  color: var(--ink-4);
+  margin-bottom: .6rem;
+}
+
+.convo__count b {
+  color: var(--ink-2);
+  font-weight: 400;
+}
+
+.convo__q {
+  font-size: clamp(1rem, 1.5vw, 1.28rem);
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: .01em;
+  color: var(--ink);
+  min-height: 2.5em;
+  margin-bottom: .8rem;
+  transition: opacity .4s var(--ease), transform .5s var(--slow);
+}
+
+.convo__q.is-swap {
+  opacity: 0;
+  transform: translateY(9px);
+}
+
+.convo__field {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--hair);
+  transition: border-color .4s var(--ease);
+}
+
+.convo__field.is-focus {
+  border-color: var(--ink);
+}
+
+.convo__field.is-error {
+  border-color: rgba(255, 120, 110, .85);
+}
+
+.convo__input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: .95rem;
+  letter-spacing: .01em;
+  padding: .5rem 0 .7rem;
+  resize: none;
+}
+
+.convo__input--area {
+  line-height: 1.6;
+}
+
+.convo__input::placeholder {
+  color: var(--ink-4);
+}
+
+.convo__input:focus {
+  outline: none;
+}
+
+.convo__next {
+  flex: none;
+  background: none;
+  border: none;
+  color: var(--ink-3);
+  cursor: pointer;
+  padding: .5rem .1rem .6rem .8rem;
+  display: grid;
+  place-items: center;
+  transition: color .35s var(--ease);
+}
+
+.convo__next svg {
+  width: 26px;
+  height: 10px;
+  overflow: visible;
+}
+
+.convo__next svg path {
+  transition: transform .45s var(--slow);
+}
+
+.convo__next:hover {
+  color: var(--ink);
+}
+
+.convo__next:hover svg path {
+  transform: translateX(4px);
+}
+
+.convo__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: .7rem;
+  min-height: 1rem;
+}
+
+.convo__back {
+  background: none;
+  border: none;
+  color: var(--ink-4);
+  font: inherit;
+  font-size: .66rem;
+  letter-spacing: .12em;
+  cursor: pointer;
+  padding: 0;
+  transition: color .3s var(--ease);
+}
+
+.convo__back:hover {
+  color: var(--ink-2);
+}
+
+.convo__hint {
+  margin-left: auto;
+  font-size: .61rem;
+  letter-spacing: .09em;
+  color: var(--ink-4);
+  text-align: right;
+}
+
+.convo__err {
+  min-height: 1rem;
+  margin-top: .5rem;
+  font-size: .68rem;
+  letter-spacing: .05em;
+  color: rgba(255, 140, 130, .9);
+  opacity: 0;
+  transition: opacity .3s var(--ease);
+}
+
+.convo__err.is-visible {
+  opacity: 1;
+}
+
+/* confirmation */
+.convo__done-title {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  font-weight: 200;
+  letter-spacing: .06em;
+  color: var(--ink);
+  margin-bottom: .6rem;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.convo__done-sub {
+  font-size: .88rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.convo__done.is-in .convo__done-title {
+  opacity: 1;
+  transform: none;
+  transition: opacity .7s var(--slow) .15s, transform .8s var(--slow) .15s;
+}
+
+.convo__done.is-in .convo__done-sub {
+  opacity: 1;
+  transform: none;
+  transition: opacity .7s var(--slow) .4s, transform .8s var(--slow) .4s;
+}
+
+/* ── light-sweep confirmation overlay ───────────────────── */
+
+.lightwipe {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.lightwipe.is-active {
+  opacity: 1;
+}
+
+.lightwipe__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -12vw;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, #fff 14%, #fff 86%, transparent);
+  box-shadow:
+    0 0 24px 6px rgba(255, 255, 255, .6),
+    0 0 90px 28px rgba(255, 255, 255, .22);
+  opacity: 0;
+}
+
+.lightwipe.is-active .lightwipe__line {
+  animation: sweep 1.05s var(--slow) forwards;
+}
+
+@keyframes sweep {
+  0%   { left: -12vw; opacity: 0; }
+  14%  { opacity: 1; }
+  86%  { opacity: 1; }
+  100% { left: 112vw; opacity: 0; }
+}
+
+.lightwipe.is-active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 50% at 50% 45%, rgba(255, 255, 255, .10), transparent 70%);
+  animation: flash 1.05s var(--ease) forwards;
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 0; }
+  45% { opacity: 1; }
 }
 
 /* ============================================================
@@ -505,8 +825,8 @@ ul {
     height: min(38vh, 320px)
   }
 
-  .form {
-    width: min(100%, 24rem)
+  .convo {
+    width: min(100%, 28rem)
   }
 }
 
@@ -546,12 +866,9 @@ ul {
     font-size: .88rem
   }
 
-  .notify {
-    margin-top: 2.4rem
-  }
-
-  .form {
-    width: 100%
+  .convo {
+    margin-top: 2.4rem;
+    width: 100%;
   }
 
   .footer {
@@ -571,7 +888,7 @@ ul {
     height: min(52vh, 360px)
   }
 
-  .notify {
+  .convo {
     margin-top: 1.6rem
   }
 }

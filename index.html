@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 
@@ -26,6 +26,8 @@
 <div class="grain" aria-hidden="true"></div>
 <!-- vignette -->
 <div class="vignette" aria-hidden="true"></div>
+<!-- light-sweep confirmation overlay -->
+<div class="lightwipe" id="lightwipe" aria-hidden="true"><span class="lightwipe__line"></span></div>
 
 <div class="shell">
 
@@ -64,27 +66,75 @@
         that inspire and endure.
       </p>
 
-      <div class="notify">
-        <label class="notify-label" for="email">Get notified when we launch</label>
-        <form class="form" id="form" novalidate>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="input"
-            placeholder="Enter your email"
-            autocomplete="email"
-            required
-            aria-describedby="form-msg">
-          <button type="submit" class="submit" aria-label="Submit email">
-            <svg viewBox="0 0 32 12" aria-hidden="true">
-              <path d="M0 6 H29 M24 1 L30 6 L24 11" fill="none"
-                    stroke="currentColor" stroke-width="1.1"
-                    stroke-linecap="square" stroke-linejoin="miter"/>
-            </svg>
+      <!-- ─────────── CONTACT: notify (primary) + message (opt-in) ─────────── -->
+      <div class="contact">
+
+        <!-- primary: launch waitlist -->
+        <div class="notify" id="notify">
+          <label class="notify-label" for="email">Get notified when we launch</label>
+          <form class="form" id="form" novalidate>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="input"
+              placeholder="Enter your email"
+              autocomplete="email"
+              required
+              aria-describedby="form-msg">
+            <button type="submit" class="submit" aria-label="Submit email">
+              <svg viewBox="0 0 32 12" aria-hidden="true">
+                <path d="M0 6 H29 M24 1 L30 6 L24 11" fill="none"
+                      stroke="currentColor" stroke-width="1.1"
+                      stroke-linecap="square" stroke-linejoin="miter"/>
+              </svg>
+            </button>
+          </form>
+          <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+
+          <button class="contact-switch" id="to-message" type="button">
+            Have a project in mind? <span>Send us a message&nbsp;&rarr;</span>
           </button>
-        </form>
-        <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+        </div>
+
+        <!-- opt-in: guided message dialogue -->
+        <div class="convo" id="convo" hidden>
+          <button class="convo__leave" id="to-notify" type="button">&larr;&nbsp;Notify me instead</button>
+          <p class="convo__eyebrow">Start a conversation</p>
+
+          <div class="convo__stage" id="convo-stage">
+            <span class="convo__count" aria-hidden="true"><b id="convo-n">01</b> / 03</span>
+
+            <p class="convo__q" id="convo-q" aria-live="polite"></p>
+
+            <div class="convo__field">
+              <input class="convo__input" id="convo-input" type="text"
+                     autocomplete="off" autocapitalize="sentences"
+                     aria-labelledby="convo-q" aria-describedby="convo-err">
+              <textarea class="convo__input convo__input--area" id="convo-area" rows="2"
+                        aria-labelledby="convo-q" aria-describedby="convo-err" hidden></textarea>
+              <button class="convo__next" id="convo-next" type="button" aria-label="Continue">
+                <svg viewBox="0 0 32 12" aria-hidden="true">
+                  <path d="M0 6 H29 M24 1 L30 6 L24 11" fill="none"
+                        stroke="currentColor" stroke-width="1.1"
+                        stroke-linecap="square" stroke-linejoin="miter"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="convo__meta">
+              <button class="convo__back" id="convo-back" type="button" hidden>&larr; Back</button>
+              <span class="convo__hint" id="convo-hint"></span>
+            </div>
+            <p class="convo__err" id="convo-err" role="alert"></p>
+          </div>
+
+          <div class="convo__done" id="convo-done" hidden>
+            <p class="convo__done-title">Received.</p>
+            <p class="convo__done-sub">Thank you<span id="convo-name"></span>. We&rsquo;ll be in touch.</p>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -112,6 +162,6 @@
 
 <!-- EmailJS SDK — public key is safe to expose (read the note in script.js) -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="script.js"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>
