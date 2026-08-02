@@ -51,6 +51,8 @@ const posts = files.map(file => {
     date:     data.date     || '',
     image:    data.image    || '',
     excerpt:  data.excerpt  || '',
+    ctaLabel: data.cta_label || '',
+    ctaUrl:   data.cta_url   || '',
     body:     paragraphs(body)
   };
 });

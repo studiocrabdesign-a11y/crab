@@ -35,6 +35,23 @@
     }
   }
 
+  /* ── 0. Geo framing — Bengaluru for India, neutral elsewhere ──
+     Timezone-based: no third-party call, no permission prompt,
+     privacy-friendly. India-level only (can't pinpoint the city).
+     The SEO-critical location stays in the schema + meta at all
+     times, so this only tailors the visible first impression;
+     it never hides the studio's base from search engines.        */
+  (function () {
+    var tz = '';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+    if (/^Asia\/(Kolkata|Calcutta)$/.test(tz)) {
+      var locale = document.getElementById('locale');
+      if (locale) locale.textContent = 'Bengaluru, India · ';
+      document.title = 'CRAB Design Studio — Architecture & Interior Design in Bengaluru';
+    }
+    // visitors outside India keep the neutral title + no city shown
+  })();
+
   /* ── 1. Per-character title reveal ───────────────────────
      Split into spans so each letter can rise independently.
      data-text holds the source string; aria-label keeps the

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- This page lives at /tools/vastu-checker/ ; resolve assets from site root. -->
+<base href="../../">
+<title>Vastu Compliance Checker for Your Home — CRAB Design Studio</title>
+<meta name="description" content="Free Vastu compliance checker. Check your home's entrance, kitchen, master bedroom, toilet and pooja room placements against traditional Vastu Shastra guidance.">
+<meta name="theme-color" content="#040404">
+<link rel="canonical" href="https://crabdesignstudio.com/tools/vastu-checker">
+
+<meta property="og:title" content="Vastu Compliance Checker for Your Home">
+<meta property="og:description" content="Check your entrance, kitchen, bedroom and toilet placements against traditional Vastu guidance in under a minute.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://crabdesignstudio.com/tools/vastu-checker">
+<meta property="og:site_name" content="CRAB Design Studio">
+<meta property="og:image" content="https://crabdesignstudio.com/assets/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vastu Compliance Checker for Your Home">
+<meta name="twitter:description" content="Check your entrance, kitchen, bedroom and toilet placements against traditional Vastu guidance in under a minute.">
+<meta name="twitter:image" content="https://crabdesignstudio.com/assets/hero.jpg">
+
+<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=5">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which direction is best for a main entrance according to Vastu?",
+      "acceptedAnswer": { "@type": "Answer", "text": "North, East and Northeast are traditionally considered the most favourable directions for a home's main entrance." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which direction is best for a kitchen according to Vastu?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Southeast is traditionally considered the ideal direction for a kitchen, sometimes called the 'Agni' or fire corner. Northwest is a commonly used secondary option." }
+    },
+    {
+      "@type": "Question",
+      "name": "Where should the master bedroom be placed?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The Southwest direction is traditionally recommended for the master bedroom, particularly for the head of the household." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this checker a substitute for a Vastu consultant?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. This tool offers general traditional guidance based on commonly published Vastu Shastra principles. For a full consultation tailored to your specific plot and structure, speak with a qualified Vastu expert." }
+    }
+  ]
+}
+</script>
+</head>
+<body class="page-blog">
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="shell shell--blog">
+
+  <header class="header">
+    <a href="./" class="logo" aria-label="CRAB Design Studio">
+      <img class="logo-mark" src="assets/logo.png" width="674" height="240"
+           alt="CRAB Design Studio">
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="./">Home</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="blog/">Blog</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="tools/" aria-current="page">Tools</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="tool-back" href="tools/">&larr; All tools</a>
+
+    <div class="blog-head">
+      <h1 class="blog-title" style="font-size: clamp(1.9rem, 4.4vw, 3rem);">Vastu Compliance Checker</h1>
+      <div class="rule" aria-hidden="true"></div>
+      <p class="blog-intro">
+        Five questions about your home's layout, checked against traditional
+        Vastu Shastra guidance.
+      </p>
+    </div>
+
+    <section class="tool-panel">
+      <div id="vastu-steps"></div>
+
+      <div class="tool-result" id="vastu-result" hidden>
+        <p class="tool-result__label">Your result</p>
+        <p class="tool-result__value" id="vastu-verdict">—</p>
+        <div id="vastu-breakdown" style="margin-bottom: 1.8rem;"></div>
+
+        <p class="tool-disclaimer" style="margin-top: 0; margin-bottom: 1.8rem;">
+          This reflects general traditional guidance, not a substitute for a
+          full consultation with a qualified Vastu expert — every plot and
+          structure has constraints a five-question checker can't see.
+        </p>
+
+        <button class="tool-restart" id="vastu-restart">Start over</button>
+      </div>
+    </section>
+
+    <div class="tool-cta">
+      <p class="tool-cta__title">Want a fully Vastu-aligned design from the ground up?</p>
+      <p class="tool-cta__desc">We work with clients who want traditional Vastu principles considered from the earliest floor plan, not retrofitted afterward.</p>
+      <div class="tool-cta__actions">
+        <a href="./#notify">Talk to us</a>
+      </div>
+    </div>
+
+    <div class="tool-content">
+      <h2>How this checker works</h2>
+      <p>Vastu Shastra is a traditional Indian system of architecture that assigns ideal compass directions to different rooms and functions in a home. This checker asks about five of the most commonly discussed placements — main entrance, kitchen, master bedroom, toilet, and pooja/prayer room — and compares your answers against widely published traditional guidance.</p>
+      <p>It's necessarily a simplification. A full Vastu consultation looks at plot shape, the position of the site itself, structural elements, and often a client's specific horoscope considerations — none of which a five-question web tool can account for. Treat this as a starting point for a conversation, not a final verdict.</p>
+    </div>
+
+    <div class="tool-faq">
+      <details>
+        <summary>Which direction is best for a main entrance?</summary>
+        <p>North, East and Northeast are traditionally considered the most favourable directions for a home's main entrance.</p>
+      </details>
+      <details>
+        <summary>Which direction is best for a kitchen?</summary>
+        <p>Southeast is traditionally considered ideal — sometimes called the "Agni" or fire corner. Northwest is a commonly used secondary option.</p>
+      </details>
+      <details>
+        <summary>Where should the master bedroom be placed?</summary>
+        <p>Southwest is traditionally recommended for the master bedroom, particularly for the head of the household.</p>
+      </details>
+      <details>
+        <summary>Is this checker a substitute for a Vastu consultant?</summary>
+        <p>No. It offers general traditional guidance based on commonly published principles. For a full consultation tailored to your specific plot and structure, speak with a qualified Vastu expert.</p>
+      </details>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <ul class="social">
+      <li><a href="https://www.instagram.com/crabdesign_studio/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.linkedin.com/crab_design_studio" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="#">Behance</a></li>
+    </ul>
+    <p class="copyright">&copy; 2026 CRAB Design Studio</p>
+  </footer>
+
+</div>
+
+<script src="tools.js"></script>
+<script>
+(function () {
+  function dirs(spec) {
+    // spec: { Direction: [points, note], ... } — any direction missing defaults to avoid/0
+    const all = ['North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest'];
+    return all.map(d => {
+      const [points, note] = spec[d] || [0, 'Not traditionally recommended for this room.'];
+      return { label: d, points, note, sub: points === 2 ? 'Ideal' : points === 1 ? 'Acceptable' : 'Consider adjusting' };
+    });
+  }
+
+  const steps = [
+    { q: "Which direction does your main entrance face?", grid2: true, key: 'Entrance', options: dirs({
+        North: [2, 'Considered highly auspicious for the main entrance.'],
+        East: [2, 'A classic, well-regarded entrance direction.'],
+        Northeast: [2, 'The most favoured entrance direction in traditional Vastu.'],
+        Northwest: [1, 'Workable, though not the top preference.'],
+        West: [1, 'Generally fine for a main entrance.'],
+        Southeast: [0, 'Traditionally considered less favourable for an entrance.'],
+        South: [0, 'Traditionally advised against for a main entrance.'],
+        Southwest: [0, 'Traditionally the least preferred entrance direction.'],
+      })},
+    { q: "Which direction is your kitchen in?", grid2: true, key: 'Kitchen', options: dirs({
+        Southeast: [2, "The traditional 'Agni corner' — considered the best kitchen placement."],
+        Northwest: [1, 'A commonly used secondary option.'],
+        East: [1, 'Workable for a kitchen.'],
+        West: [1, 'Workable, though not the top choice.'],
+        North: [0, 'Not traditionally recommended for a kitchen.'],
+        Northeast: [0, 'Considered unsuitable — this zone is reserved for prayer.'],
+        South: [0, 'Not a preferred kitchen direction.'],
+        Southwest: [0, 'Not traditionally recommended.'],
+      })},
+    { q: "Which direction is your master bedroom in?", grid2: true, key: 'Master bedroom', options: dirs({
+        Southwest: [2, 'The traditional placement for the head of household.'],
+        South: [1, 'A commonly accepted alternative.'],
+        West: [1, 'Workable for a bedroom.'],
+        Northwest: [1, 'Fine, especially for guest or younger family bedrooms.'],
+        Northeast: [0, 'Traditionally reserved for prayer, not sleeping.'],
+        North: [0, 'Not the preferred direction for a master bedroom.'],
+        East: [0, 'Better suited to living or study areas.'],
+        Southeast: [0, 'Associated with fire energy — not ideal for a bedroom.'],
+      })},
+    { q: "Where is your main toilet/bathroom, relative to the house?", grid2: true, key: 'Toilet', options: dirs({
+        West: [2, 'One of the better-regarded placements for a toilet.'],
+        Northwest: [2, 'Considered a favourable placement.'],
+        South: [1, 'Workable placement.'],
+        East: [1, 'Generally acceptable if unavoidable.'],
+        Southeast: [1, 'Workable, though not the top preference.'],
+        Southwest: [0, 'Not traditionally recommended.'],
+        North: [0, 'Not a preferred placement.'],
+        Northeast: [0, 'Strongly advised against — this zone is reserved for purity/prayer.'],
+      })},
+    { q: "Which direction is your pooja/prayer room in?", grid2: true, key: 'Pooja room', options: dirs({
+        Northeast: [2, 'The traditional placement — the most sacred zone of the home.'],
+        East: [1, 'A commonly used alternative.'],
+        North: [1, 'Workable for a prayer space.'],
+        West: [0, 'Not traditionally recommended.'],
+        South: [0, 'Traditionally considered unsuitable.'],
+        Southeast: [0, 'Associated with fire energy — not ideal here.'],
+        Southwest: [0, 'Traditionally the least suitable direction.'],
+        Northwest: [0, 'Not a preferred placement.'],
+      })},
+  ];
+
+  const container = document.getElementById('vastu-steps');
+  const result = document.getElementById('vastu-result');
+  const verdictEl = document.getElementById('vastu-verdict');
+  const breakdownEl = document.getElementById('vastu-breakdown');
+
+  const flow = buildToolFlow(container, result, steps, (answers) => {
+    const total = answers.reduce((s, a) => s + a.points, 0);
+    const max = steps.length * 2;
+
+    let verdict;
+    if (total >= 8) verdict = 'Strongly Vastu-aligned';
+    else if (total >= 5) verdict = 'Partially aligned';
+    else verdict = 'Several guidelines not met';
+    verdictEl.textContent = `${verdict} (${total}/${max})`;
+
+    breakdownEl.innerHTML = '';
+    answers.forEach((a, i) => {
+      const row = document.createElement('div');
+      row.style.borderTop = '1px solid var(--hair)';
+      row.style.padding = '1rem 0';
+      row.innerHTML = `<p style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.4rem;">${steps[i].key} — ${a.label} <span style="color:var(--ink-4)">(${a.sub})</span></p><p style="font-size:.86rem;line-height:1.6;color:var(--ink-2);">${a.note}</p>`;
+      breakdownEl.appendChild(row);
+    });
+  });
+
+  document.getElementById('vastu-restart').addEventListener('click', () => flow.reset());
+})();
+</script>
+</body>
+</html>

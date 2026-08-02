@@ -145,6 +145,14 @@
       rBody.appendChild(el);
     });
 
+    if (post.ctaUrl) {
+      var cta = document.createElement('a');
+      cta.className = 'reader__cta';
+      cta.href = assetUrl(post.ctaUrl);
+      cta.textContent = (post.ctaLabel || 'Learn more') + ' →';
+      rBody.appendChild(cta);
+    }
+
     reader.hidden = false;
     document.body.style.overflow = 'hidden';
     requestAnimationFrame(function () { reader.classList.add('is-open'); });
