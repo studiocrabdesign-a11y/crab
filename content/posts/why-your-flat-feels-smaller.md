@@ -2,9 +2,9 @@
 title: Why Your Flat Feels Smaller Than the Brochure Promised
 category: Real Estate
 date: 2026-07-30
+image: assets/blog/corridor-shared-space.jpg
 excerpt: The brochure said 1,400 square feet. It doesn't feel like it. Here's where the missing space actually went.
-cta_label: Try the carpet area calculator
-cta_url: tools/carpet-area-calculator/
+embed: carpet-area-calculator
 ---
 
 It's one of the most common moments of quiet disappointment in a new home: the brochure promised 1,400 square feet, the sale deed says the same, and yet the flat feels closer to a thousand. Nothing was hidden and nothing was misrepresented — the number on the brochure was almost certainly the super built-up area, and the gap between that figure and the space you can actually furnish is where the disappointment lives.

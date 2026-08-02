@@ -2,7 +2,7 @@
 title: Material Honesty
 category: Design
 date: 2026-05-12
-image: assets/blog/post-3.jpg
+image: assets/blog/material-honesty-texture.jpg
 excerpt: Why we leave concrete as concrete, steel as steel — and let time, not paint, do the finishing.
 ---
 Every material carries a truth. Concrete wants to read as mass. Timber wants to warm and age. When we hide those truths under coatings, a building loses its voice.

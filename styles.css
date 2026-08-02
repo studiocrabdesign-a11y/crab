@@ -1045,82 +1045,82 @@ ul {
   transform: translateX(5px);
 }
 
-/* ── reader overlay ─────────────────────────────────────── */
+/* ── individual post pages ──────────────────────────────── */
 
-.reader {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
+.post-layout {
   display: grid;
-  place-items: center;
-  padding: clamp(1rem, 4vw, 3rem);
+  grid-template-columns: minmax(0, 34rem) minmax(14rem, 18rem);
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: start;
 }
 
-/* when closed it must truly be gone — otherwise this full-screen overlay
-   sits invisibly on top and eats clicks meant for the post cards.
-   The [hidden] attribute alone loses to the .reader display rule above. */
-.reader[hidden] {
-  display: none;
+.post-sidebar {
+  position: sticky;
+  top: clamp(1.5rem, 3vh, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
 }
 
-.reader__backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, .72);
-  backdrop-filter: blur(3px);
-  opacity: 0;
-  transition: opacity .32s var(--ease);
-}
-
-.reader.is-open .reader__backdrop {
-  opacity: 1;
-}
-
-.reader__panel {
-  position: relative;
-  width: min(46rem, 100%);
-  max-height: 88svh;
-  background: #0b0b0b;
-  border: 1px solid var(--hair);
-  opacity: 0;
-  transform: translateY(16px) scale(.99);
-  transition: opacity .32s var(--ease), transform .42s var(--slow);
-}
-
-.reader.is-open .reader__panel {
-  opacity: 1;
-  transform: none;
-}
-
-.reader__scroll {
-  max-height: 88svh;
-  overflow-y: auto;
-  padding: clamp(1.6rem, 4vw, 3.2rem);
-}
-
-.reader__close {
-  position: absolute;
-  top: .5rem;
-  right: .5rem;
-  z-index: 2;
-  width: 2.6rem;
-  height: 2.6rem;
-  display: grid;
-  place-items: center;
-  background: none;
-  border: none;
+.post-sidebar__label {
+  font-size: .64rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
   color: var(--ink-3);
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.post-toc ul,
+.post-related ul {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+
+.post-toc a {
+  font-size: .85rem;
+  line-height: 1.5;
+  color: var(--ink-2);
   transition: color .3s var(--ease);
 }
 
-.reader__close:hover {
+.post-toc a:hover {
   color: var(--ink);
 }
 
-.reader__img {
+.post-related {
+  padding-top: 2rem;
+  border-top: 1px solid var(--hair);
+}
+
+.post-related a {
+  display: block;
+  font-size: .85rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  transition: color .3s var(--ease);
+}
+
+.post-related a:hover {
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .post-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .post-sidebar {
+    position: static;
+    max-width: 34rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--hair);
+  }
+}
+
+.post-hero {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
@@ -1129,7 +1129,7 @@ ul {
   margin-bottom: 1.8rem;
 }
 
-.reader__meta {
+.post-meta {
   font-size: .64rem;
   letter-spacing: .18em;
   text-transform: uppercase;
@@ -1137,39 +1137,164 @@ ul {
   margin-bottom: .8rem;
 }
 
-.reader__title {
-  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
-  font-weight: 200;
-  line-height: 1.2;
-  letter-spacing: .01em;
-  margin-bottom: 1.6rem;
+.post-body {
+  max-width: 34rem;
+  margin-bottom: clamp(2.5rem, 5vh, 3.5rem);
 }
 
-.reader__body p {
+.post-body p {
   font-size: .96rem;
   line-height: 1.85;
   color: var(--ink-2);
   margin-bottom: 1.15rem;
 }
 
-.reader__body p:last-child {
+.post-body p:last-child {
   margin-bottom: 0;
 }
 
-.reader__cta {
-  display: inline-block;
-  margin-top: .6rem;
-  padding: .9rem 1.4rem;
-  border: 1px solid var(--hair);
-  font-size: .78rem;
-  letter-spacing: .04em;
+.post-body strong {
   color: var(--ink);
-  transition: border-color .3s var(--ease), background-color .3s var(--ease);
+  font-weight: 500;
 }
 
-.reader__cta:hover {
-  border-color: rgba(255, 255, 255, .4);
-  background: rgba(255, 255, 255, .04);
+.post-body a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink-4);
+  transition: border-color .3s var(--ease);
+}
+
+.post-body a:hover {
+  border-color: var(--ink);
+}
+
+.post-body h2 {
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin: 2.2rem 0 1rem;
+}
+
+.post-body h3 {
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  font-weight: 500;
+  color: var(--ink);
+  margin: 1.8rem 0 .9rem;
+}
+
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1.15rem 1.3rem;
+}
+
+.post-body li {
+  font-size: .96rem;
+  line-height: 1.85;
+  color: var(--ink-2);
+  margin-bottom: .4rem;
+}
+
+.post-body blockquote {
+  border-left: 2px solid var(--ink-4);
+  margin: 1.8rem 0;
+  padding-left: 1.4rem;
+}
+
+.post-body blockquote p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--ink);
+  font-style: italic;
+}
+
+.post-body img {
+  display: block;
+  width: 100%;
+  margin: .4rem 0 1.15rem;
+  filter: grayscale(1);
+}
+
+.post-figure {
+  margin: 2rem 0;
+  max-width: 34rem;
+}
+
+.post-figure img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1);
+}
+
+.post-figure figcaption {
+  margin-top: .7rem;
+  font-size: .74rem;
+  letter-spacing: .04em;
+  color: var(--ink-4);
+}
+
+/* cover image — full-width 16:10 hero, sits directly below the post title */
+.post-cover {
+  width: 100%;
+  margin: 0 0 clamp(2rem, 4.5vh, 3.2rem);
+}
+
+.post-cover img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1) contrast(1.05);
+}
+
+.post-table-wrap {
+  overflow-x: auto;
+  margin: 1.8rem 0 2.2rem;
+}
+
+.post-body table {
+  width: 100%;
+  min-width: 30rem;
+  border-collapse: collapse;
+  font-size: .86rem;
+}
+
+.post-body th,
+.post-body td {
+  text-align: left;
+  padding: .8rem 1.1rem .8rem 0;
+  border-bottom: 1px solid var(--hair);
+  vertical-align: top;
+}
+
+.post-body th:last-child,
+.post-body td:last-child {
+  min-width: 14rem;
+}
+
+.post-body th {
+  font-size: .64rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--ink-3);
+  border-bottom: 1px solid var(--ink-4);
+}
+
+.post-body td {
+  color: var(--ink-2);
+}
+
+.embed-eyebrow {
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 1.4rem;
+  padding-top: clamp(1.5rem, 3vh, 2.2rem);
+  border-top: 1px solid var(--hair);
 }
 
 @media (max-width:600px) {
@@ -1219,71 +1344,6 @@ ul {
 
 .tool-back:hover { color: var(--ink-2); }
 
-/* ── hub grid (tools/index) ─────────────────────────────── */
-
-.tool-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: clamp(1.6rem, 3vw, 2.4rem);
-}
-
-.tool-card {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--hair);
-  padding: clamp(1.6rem, 3vw, 2.2rem);
-  transition: border-color .3s var(--ease), background-color .3s var(--ease);
-}
-
-.tool-card:hover {
-  border-color: rgba(255, 255, 255, .35);
-  background: rgba(255, 255, 255, .02);
-}
-
-.tool-card__eyebrow {
-  font-size: .64rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  margin-bottom: .8rem;
-}
-
-.tool-card__title {
-  font-size: 1.24rem;
-  font-weight: 300;
-  line-height: 1.3;
-  margin-bottom: .7rem;
-}
-
-.tool-card__desc {
-  font-size: .86rem;
-  line-height: 1.65;
-  color: var(--ink-2);
-  margin-bottom: 1.4rem;
-  flex: 1;
-}
-
-.tool-card__link {
-  font-size: .68rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  transition: color .3s var(--ease);
-}
-
-.tool-card__link span {
-  display: inline-block;
-  transition: transform .35s var(--slow);
-}
-
-.tool-card:hover .tool-card__link {
-  color: var(--ink);
-}
-
-.tool-card:hover .tool-card__link span {
-  transform: translateX(5px);
-}
-
 /* ── step-based tools (multi-question flows) ────────────── */
 
 .tool-panel {
@@ -1331,11 +1391,6 @@ ul {
   font-size: .68rem;
   letter-spacing: .04em;
   color: var(--ink-4);
-}
-
-.tool-swatch {
-  height: 4.2rem;
-  margin-bottom: .8rem;
 }
 
 .tool-result {
@@ -1457,25 +1512,7 @@ ul {
   font-weight: 400;
 }
 
-/* ── article content + FAQ (SEO substance) ──────────────── */
-
-.tool-content {
-  max-width: 34rem;
-  margin: clamp(3rem, 6vh, 4.5rem) 0;
-}
-
-.tool-content h2 {
-  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
-  font-weight: 300;
-  margin-bottom: 1rem;
-}
-
-.tool-content p {
-  font-size: .9rem;
-  line-height: 1.8;
-  color: var(--ink-2);
-  margin-bottom: 1.1rem;
-}
+/* ── FAQ (SEO substance) ─────────────────────────────────── */
 
 .tool-faq {
   max-width: 34rem;

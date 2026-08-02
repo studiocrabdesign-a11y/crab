@@ -2,9 +2,9 @@
 title: Vastu for the Main Door — Which Direction Is Right?
 category: Home Planning
 date: 2026-07-25
+image: assets/blog/entrance-threshold.jpg
 excerpt: The most frequently asked Vastu question of all, and what traditional guidance actually says about it.
-cta_label: Check your home's Vastu compliance
-cta_url: tools/vastu-checker/
+embed: vastu-checker
 ---
 
 Of every question raised in a Vastu consultation, the direction of the main entrance comes up first more often than any other — understandably, since it's usually the one element of a floor plan that's already fixed by the time anyone starts asking. Traditional Vastu Shastra treats North, East, and Northeast as the most favourable directions for a home's main entrance, with Northeast in particular regarded as the single most auspicious placement of all.

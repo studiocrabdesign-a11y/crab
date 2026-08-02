@@ -1,149 +1,84 @@
 {
   "posts": [
     {
+      "slug": "carpet-vs-built-up-area-rera",
       "title": "Carpet Area vs Built-up Area vs Super Built-up Area — What RERA Actually Requires",
       "category": "Real Estate",
       "date": "2026-08-02",
-      "image": "",
-      "excerpt": "Three numbers, one flat, and only one of them is space you can actually furnish. Here's what each figure legally means.",
-      "ctaLabel": "Try the carpet area calculator",
-      "ctaUrl": "tools/carpet-area-calculator/",
-      "body": [
-        "Every apartment sale in India comes wrapped in three different area figures, and it is entirely possible to sign a sale agreement without ever being told which one the price per square foot was based on. Carpet area is the usable floor space inside your own walls — the area you could genuinely lay a carpet across. Built-up area adds the thickness of those walls, plus any attached balcony. Super built-up area, sometimes called saleable area, adds a proportionate share of the building's common spaces: the lobby, the stairwell, the lift shaft, occasionally a clubhouse you may rarely visit.",
-        "RERA changed the disclosure rules, not the pricing convention. Since the Act came into force, builders are legally required to state a project's carpet area alongside the sale price. What RERA did not change is the fact that the headline rate — the number quoted in every brochure and every advertisement — is still almost always pegged to super built-up area. Two flats advertised at an identical rate per square foot can hand over meaningfully different amounts of usable space, depending entirely on the loading factor between carpet and super built-up.",
-        "That loading factor is not fixed by law. It varies by builder, by project, and sometimes within the same building depending on which wing or floor you're on. A loading of 20% is common; 30% or higher is not unusual in projects with generous shared amenities. The only way to know what you are actually buying is to ask for the carpet area in writing and do the arithmetic yourself before comparing two properties on price.",
-        "This matters just as much after possession as it does at the point of sale. Furniture layouts, room proportions, and any renovation budget should all be planned against carpet area, not the number on the brochure — it is the only figure that describes the space you will actually live in."
-      ]
+      "image": "assets/blog/carpet-area-interior.jpg",
+      "excerpt": "Three numbers, one flat, and only one of them is space you can actually furnish. Here's what each figure legally means."
     },
     {
+      "slug": "interior-design-cost-bengaluru-2026",
       "title": "How Much Does Interior Design Cost in Bengaluru in 2026",
       "category": "Budgeting",
       "date": "2026-08-01",
-      "image": "",
-      "excerpt": "A straight answer to the question every client asks first, before they ask anything else.",
-      "ctaLabel": "Get your ballpark estimate",
-      "ctaUrl": "tools/interior-design-cost-calculator/",
-      "body": [
-        "It's the first question almost every client wants answered and the last one most designers want to commit to in writing, because the honest answer is a range, not a number. In Bengaluru, as a rough guide, essential fit-outs — clean, functional, built around modular pieces — run somewhere between ₹1,200 and ₹1,800 per square foot of carpet area. Refined interiors, with more considered materials and some custom joinery, sit between ₹1,800 and ₹3,000. Fully bespoke work, where almost nothing is off-the-shelf, starts around ₹3,000 and climbs well past ₹5,000 depending on how far you push it.",
-        "Three things move a project between those bands. The first is finish level: modular, factory-made carpentry costs a fraction of solid-wood or stone custom work, and this single decision affects the budget more than any other. The second is scope — a partial refresh of one or two rooms costs far less per square foot than a full gut renovation or fitting out a bare shell from scratch, since site preparation and structural work carry their own overhead regardless of finish. The third is simply which part of the city you're building in; rates in central, established neighbourhoods tend to run higher than in newer developments further out, largely on labour and logistics.",
-        "What these ranges can't capture is everything specific to your actual space: whether walls need to move, what condition the existing electrical and plumbing are in, what grade of appliances and fittings you're specifying. Two 1,500 square foot apartments can land two or three times apart in final cost once those specifics are accounted for.",
-        "A calculator can get you to a ballpark in under a minute. Getting from ballpark to an actual number takes a site visit and a conversation about what you actually want the space to do."
-      ]
+      "image": "assets/blog/material-tiers.jpg",
+      "excerpt": "A straight answer to the question every client asks first, before they ask anything else."
     },
     {
+      "slug": "why-your-flat-feels-smaller",
       "title": "Why Your Flat Feels Smaller Than the Brochure Promised",
       "category": "Real Estate",
       "date": "2026-07-30",
-      "image": "",
-      "excerpt": "The brochure said 1,400 square feet. It doesn't feel like it. Here's where the missing space actually went.",
-      "ctaLabel": "Try the carpet area calculator",
-      "ctaUrl": "tools/carpet-area-calculator/",
-      "body": [
-        "It's one of the most common moments of quiet disappointment in a new home: the brochure promised 1,400 square feet, the sale deed says the same, and yet the flat feels closer to a thousand. Nothing was hidden and nothing was misrepresented — the number on the brochure was almost certainly the super built-up area, and the gap between that figure and the space you can actually furnish is where the disappointment lives.",
-        "Walk through where that difference goes. A share of it sits in the thickness of your own walls, which built-up area accounts for but carpet area does not. A further share is your proportionate slice of the building's shared infrastructure — corridors you walk through for seconds a day, a lobby you pass once each morning, a staircase you may never use if you take the lift. None of that is usable floor space inside your own four walls, but all of it is priced into the rate you paid per square foot.",
-        "The frustration is rarely about being overcharged. It's about expectation set by the wrong number. A flat quoted at 1,400 square feet super built-up, with a typical 30% loading, hands over roughly 1,000 square feet of carpet area — and that is the figure that should have shaped how you imagined the space before you ever walked in.",
-        "If you're planning furniture, storage, or a renovation, carpet area is the only number worth designing against. Convert whatever figure you were quoted before you commit to a layout — it's a five-second calculation that saves weeks of misjudged floor plans later."
-      ]
+      "image": "assets/blog/corridor-shared-space.jpg",
+      "excerpt": "The brochure said 1,400 square feet. It doesn't feel like it. Here's where the missing space actually went."
     },
     {
+      "slug": "light-as-a-building-material",
       "title": "Light as a Building Material",
       "category": "Design",
       "date": "2026-07-29",
-      "image": "/assets/blog/Screenshot 2026-05-28 180334.png",
-      "excerpt": "test",
-      "ctaLabel": "",
-      "ctaUrl": "",
-      "body": [
-        "text"
-      ]
+      "image": "assets/blog/light-as-material-blade.jpg",
+      "excerpt": "We specify light the way we specify concrete or timber — by quantity, direction, and how it ages through the day."
     },
     {
+      "slug": "modular-vs-custom-interiors-budget",
       "title": "Modular vs Custom Interiors — Where the Budget Actually Goes",
       "category": "Budgeting",
       "date": "2026-07-28",
-      "image": "",
-      "excerpt": "The single biggest lever on an interiors budget isn't the size of the space. It's how much of it is custom-built.",
-      "ctaLabel": "Get your ballpark estimate",
-      "ctaUrl": "tools/interior-design-cost-calculator/",
-      "body": [
-        "Ask where an interiors budget actually goes and most people guess area — bigger home, bigger bill. Area matters, but it's rarely the biggest lever in the room. The decision that moves a budget the most is how much of the space is modular versus custom-built, and the gap between the two is larger than most first-time renovators expect.",
-        "Modular furniture and cabinetry are manufactured in standard sizes, assembled from factory-finished panels, and installed rather than built on site. That standardisation is exactly what keeps the cost down — the same components are used across thousands of homes, so the price per unit reflects volume manufacturing, not one-off craftsmanship. For kitchens and wardrobes especially, modular systems have become good enough in finish and durability that the case for going fully custom has narrowed considerably.",
-        "Custom joinery is a different proposition entirely. Solid wood, stone tops, site-built carcasses, finishes applied by hand — every piece is made once, for one space, by someone paid for their time rather than for output volume. That's where the craftsmanship shows, and it's also where the cost multiplies. A custom wardrobe wall can cost two to three times its modular equivalent for a comparable footprint.",
-        "The pragmatic approach most experienced designers land on is neither purely modular nor purely custom — it's custom where it's seen and felt most (a feature wall, a statement piece, an entrance) and modular where consistency and cost efficiency matter more (storage, utility spaces, repeated elements). Deciding that split early, before drawings are finalised, is the single most effective way to keep a budget under control without the space feeling generic."
-      ]
+      "image": "assets/blog/modular-vs-custom-texture.jpg",
+      "excerpt": "The single biggest lever on an interiors budget isn't the size of the space. It's how much of it is custom-built."
     },
     {
+      "slug": "vastu-for-the-main-door",
       "title": "Vastu for the Main Door — Which Direction Is Right?",
       "category": "Home Planning",
       "date": "2026-07-25",
-      "image": "",
-      "excerpt": "The most frequently asked Vastu question of all, and what traditional guidance actually says about it.",
-      "ctaLabel": "Check your home's Vastu compliance",
-      "ctaUrl": "tools/vastu-checker/",
-      "body": [
-        "Of every question raised in a Vastu consultation, the direction of the main entrance comes up first more often than any other — understandably, since it's usually the one element of a floor plan that's already fixed by the time anyone starts asking. Traditional Vastu Shastra treats North, East, and Northeast as the most favourable directions for a home's main entrance, with Northeast in particular regarded as the single most auspicious placement of all.",
-        "The reasoning given in traditional texts ties each direction to a different quality of entering energy — North associated with wealth, East with the rising sun and new beginnings, Northeast considered the meeting point of both. Southwest, by contrast, is traditionally held to be the least favourable direction for an entrance, along with South and Southeast, which are more commonly recommended for other functions entirely.",
-        "In practice, very few plots offer a free choice of entrance direction — the road, the neighbouring structures, and the shape of the site itself usually decide it long before Vastu enters the conversation. Where the ideal direction genuinely isn't available, traditional guidance offers secondary remedies: adjustments to the threshold, the placement of the door within its wall, and specific design elements meant to soften a less favourable orientation.",
-        "This is general traditional guidance, not a substitute for a site-specific consultation — a qualified Vastu expert accounts for plot shape, surrounding structures, and details a five-minute read never could."
-      ]
+      "image": "assets/blog/entrance-threshold.jpg",
+      "excerpt": "The most frequently asked Vastu question of all, and what traditional guidance actually says about it."
     },
     {
+      "slug": "vastu-for-the-kitchen",
       "title": "Vastu for the Kitchen — Why Southeast Matters",
       "category": "Home Planning",
       "date": "2026-07-22",
-      "image": "",
-      "excerpt": "The kitchen has one of the most consistent placements in all of traditional Vastu Shastra. Here's the reasoning behind it.",
-      "ctaLabel": "Check your home's Vastu compliance",
-      "ctaUrl": "tools/vastu-checker/",
-      "body": [
-        "Among all the room placements discussed in traditional Vastu Shastra, the kitchen is one of the more settled ones — Southeast is almost universally recommended as the ideal direction, sometimes referred to as the Agni corner, named for the element of fire it's traditionally associated with. Northwest is the commonly cited secondary option where Southeast isn't available in the plan.",
-        "The logic given in traditional texts follows the elements: Southeast is governed by Agni, fire, which is considered the natural energy of a working kitchen — cooking, after all, is an act of transformation through heat. Northeast, by contrast, is traditionally reserved for water and prayer energies, and is one of the directions most consistently advised against for a kitchen, since fire and water placed together are considered to work against each other.",
-        "Beyond direction, traditional guidance extends to the cook's orientation while working at the stove — facing East is generally recommended — and to keeping the kitchen visually and physically separate from the home's water sources and prayer space, reinforcing the same elemental logic that governs the room's placement in the first place.",
-        "As with any single-room guideline, this is traditional reasoning offered for reference, not a fixed rule that overrides a home's actual structural layout. Where Southeast isn't available, a qualified Vastu consultant can advise on remedies specific to the space rather than a placement that simply isn't possible to change."
-      ]
+      "image": "assets/blog/kitchen-corner-light.jpg",
+      "excerpt": "The kitchen has one of the most consistent placements in all of traditional Vastu Shastra. Here's the reasoning behind it."
     },
     {
+      "slug": "vastu-for-the-master-bedroom",
       "title": "Vastu for the Master Bedroom",
       "category": "Home Planning",
       "date": "2026-07-19",
-      "image": "",
-      "excerpt": "Southwest is the traditional answer for the master bedroom — and the reasoning behind it applies to more than just sleep.",
-      "ctaLabel": "Check your home's Vastu compliance",
-      "ctaUrl": "tools/vastu-checker/",
-      "body": [
-        "The Southwest direction holds a specific place in traditional Vastu Shastra as the recommended location for the master bedroom, particularly for the head of the household. The reasoning given is one of stability and grounding — Southwest is traditionally associated with the earth element and considered the most stable zone of a home, a quality thought to translate into steadier rest and steadier decision-making for whoever occupies that room.",
-        "South and West are commonly cited as acceptable alternatives when Southwest genuinely isn't available in the layout, while Northwest is often suggested specifically for guest bedrooms or younger family members rather than the primary bedroom. Northeast, by contrast, is one of the more consistently discouraged directions for any bedroom — that zone is traditionally reserved for prayer and meditation, and placing a bed there is thought to work against both functions.",
-        "Beyond the room's direction, traditional guidance extends into the layout within it: the bed positioned so the sleeper's head points South or East while sleeping, mirrors avoided directly opposite the bed, and the room kept free of clutter beneath the bed itself. These details are treated as secondary to the room's overall direction, but they're raised often enough in consultations to be worth knowing before furniture is placed.",
-        "As with every placement discussed here, this reflects general traditional guidance rather than a fixed verdict — a full consultation accounts for the specific structure, and for constraints a single room's compass direction can't capture on its own."
-      ]
+      "image": "assets/blog/bedroom-quiet-corner.jpg",
+      "excerpt": "Southwest is the traditional answer for the master bedroom — and the reasoning behind it applies to more than just sleep."
     },
     {
+      "slug": "the-weight-of-shadow",
       "title": "The Weight of Shadow",
       "category": "Interiors",
       "date": "2026-05-30",
-      "image": "assets/blog/post-2.jpg",
-      "excerpt": "A room is defined as much by what stays dark as by what is lit. Notes on designing with absence.",
-      "ctaLabel": "",
-      "ctaUrl": "",
-      "body": [
-        "Shadow is not the absence of design — it is design. A deep recess, a shaded threshold, a corner left unlit: these give a space its sense of depth and calm.",
-        "We plan shadow deliberately, mapping it through the day the same way we map light. The result is interiors that feel settled rather than staged.",
-        "Restraint is the discipline. The hardest instruction we give ourselves is to leave a surface alone."
-      ]
+      "image": "assets/blog/weight-of-shadow-corner.jpg",
+      "excerpt": "A room is defined as much by what stays dark as by what is lit. Notes on designing with absence."
     },
     {
+      "slug": "material-honesty",
       "title": "Material Honesty",
       "category": "Design",
       "date": "2026-05-12",
-      "image": "assets/blog/post-3.jpg",
-      "excerpt": "Why we leave concrete as concrete, steel as steel — and let time, not paint, do the finishing.",
-      "ctaLabel": "",
-      "ctaUrl": "",
-      "body": [
-        "Every material carries a truth. Concrete wants to read as mass. Timber wants to warm and age. When we hide those truths under coatings, a building loses its voice.",
-        "Our detailing aims to expose, not conceal — a formwork seam, the grain of a board, the patina steel earns outdoors.",
-        "Buildings made this way improve with age. That, to us, is the point."
-      ]
+      "image": "assets/blog/material-honesty-texture.jpg",
+      "excerpt": "Why we leave concrete as concrete, steel as steel — and let time, not paint, do the finishing."
     }
   ]
 }

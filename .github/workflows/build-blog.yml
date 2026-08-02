@@ -1,4 +1,5 @@
-# Rebuilds blog-posts.json whenever a post changes, then commits it back.
+# Rebuilds blog-posts.json, each post's static page, and sitemap.xml
+# whenever a post changes, then commits the results back.
 # The client never sees this — it runs automatically after every publish.
 name: Build blog
 
@@ -8,8 +9,9 @@ on:
     paths:
       - 'content/posts/**'
       - 'scripts/build-blog.mjs'
+      - 'scripts/embeds/**'
 
-# allow the workflow to push the regenerated file back
+# allow the workflow to push the regenerated files back
 permissions:
   contents: write
 
@@ -23,14 +25,14 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Compile posts -> blog-posts.json
+      - name: Compile posts -> blog-posts.json, blog/<slug>/, sitemap.xml
         run: node scripts/build-blog.mjs
 
       - name: Commit if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add blog-posts.json
+          git add blog-posts.json blog/*/index.html sitemap.xml
           # only commit when something actually changed; [skip ci] avoids a loop
-          git diff --staged --quiet || git commit -m "chore: rebuild blog-posts.json [skip ci]"
+          git diff --staged --quiet || git commit -m "chore: rebuild blog pages [skip ci]"
           git push

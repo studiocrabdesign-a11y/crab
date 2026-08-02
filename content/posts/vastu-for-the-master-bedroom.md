@@ -2,9 +2,9 @@
 title: Vastu for the Master Bedroom
 category: Home Planning
 date: 2026-07-19
+image: assets/blog/bedroom-quiet-corner.jpg
 excerpt: Southwest is the traditional answer for the master bedroom — and the reasoning behind it applies to more than just sleep.
-cta_label: Check your home's Vastu compliance
-cta_url: tools/vastu-checker/
+embed: vastu-checker
 ---
 
 The Southwest direction holds a specific place in traditional Vastu Shastra as the recommended location for the master bedroom, particularly for the head of the household. The reasoning given is one of stability and grounding — Southwest is traditionally associated with the earth element and considered the most stable zone of a home, a quality thought to translate into steadier rest and steadier decision-making for whoever occupies that room.

@@ -11,23 +11,53 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://crabdesignstudio.com/tools</loc>
+    <loc>https://crabdesignstudio.com/blog/carpet-vs-built-up-area-rera</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://crabdesignstudio.com/tools/carpet-area-calculator</loc>
+    <loc>https://crabdesignstudio.com/blog/interior-design-cost-bengaluru-2026</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://crabdesignstudio.com/tools/interior-design-cost-calculator</loc>
+    <loc>https://crabdesignstudio.com/blog/why-your-flat-feels-smaller</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://crabdesignstudio.com/tools/vastu-checker</loc>
+    <loc>https://crabdesignstudio.com/blog/light-as-a-building-material</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://crabdesignstudio.com/blog/modular-vs-custom-interiors-budget</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://crabdesignstudio.com/blog/vastu-for-the-main-door</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://crabdesignstudio.com/blog/vastu-for-the-kitchen</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://crabdesignstudio.com/blog/vastu-for-the-master-bedroom</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://crabdesignstudio.com/blog/the-weight-of-shadow</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://crabdesignstudio.com/blog/material-honesty</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

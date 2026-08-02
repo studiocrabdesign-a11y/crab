@@ -2,9 +2,9 @@
 title: Vastu for the Kitchen — Why Southeast Matters
 category: Home Planning
 date: 2026-07-22
+image: assets/blog/kitchen-corner-light.jpg
 excerpt: The kitchen has one of the most consistent placements in all of traditional Vastu Shastra. Here's the reasoning behind it.
-cta_label: Check your home's Vastu compliance
-cta_url: tools/vastu-checker/
+embed: vastu-checker
 ---
 
 Among all the room placements discussed in traditional Vastu Shastra, the kitchen is one of the more settled ones — Southeast is almost universally recommended as the ideal direction, sometimes referred to as the Agni corner, named for the element of fire it's traditionally associated with. Northwest is the commonly cited secondary option where Southeast isn't available in the plan.

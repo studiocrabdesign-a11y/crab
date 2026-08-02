@@ -2,9 +2,9 @@
 title: Modular vs Custom Interiors — Where the Budget Actually Goes
 category: Budgeting
 date: 2026-07-28
+image: assets/blog/modular-vs-custom-texture.jpg
 excerpt: The single biggest lever on an interiors budget isn't the size of the space. It's how much of it is custom-built.
-cta_label: Get your ballpark estimate
-cta_url: tools/interior-design-cost-calculator/
+embed: cost-calculator
 ---
 
 Ask where an interiors budget actually goes and most people guess area — bigger home, bigger bill. Area matters, but it's rarely the biggest lever in the room. The decision that moves a budget the most is how much of the space is modular versus custom-built, and the gap between the two is larger than most first-time renovators expect.
