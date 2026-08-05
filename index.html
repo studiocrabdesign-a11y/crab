@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=10">
 
 <!-- Structured data for search engines -->
 <script type="application/ld+json">
@@ -39,6 +39,7 @@
   "image": "https://crabdesignstudio.com/assets/hero.jpg",
   "description": "Architecture, interiors and design studio in Bengaluru crafting spaces that inspire and endure.",
   "slogan": "We craft spaces that inspire and endure.",
+  "telephone": "+91-9606165769",
   "knowsAbout": ["Architecture", "Interior Design", "Design"],
   "address": {
     "@type": "PostalAddress",
@@ -96,52 +97,56 @@
   <main class="main">
 
     <section class="content">
-      <h1 class="title">
-        <span class="line" data-text="COMING"></span>
-        <span class="line" data-text="SOON"></span>
+      <h1 class="title title--launched">
+        <span class="line" data-text="ARCHITECTURE"></span>
+        <span class="line" data-text="&amp; INTERIORS"></span>
       </h1>
 
       <div class="rule" aria-hidden="true"></div>
 
       <p class="tagline">
-        We're crafting spaces<br>
+        We craft spaces<br>
         that inspire and endure.
       </p>
 
-      <!-- ─────────── CONTACT: notify (primary) + message (opt-in) ─────────── -->
+      <!-- ─────────── CONTACT (launched): talk to us + journal newsletter ─────────── -->
       <div class="contact">
 
-        <!-- primary: launch waitlist -->
-        <div class="notify" id="notify">
-          <label class="notify-label" for="email">Get notified when we launch</label>
-          <form class="form" id="form" novalidate>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="input"
-              placeholder="Enter your email"
-              autocomplete="email"
-              required
-              aria-describedby="form-msg">
-            <button type="submit" class="submit" aria-label="Submit email">
-              <svg viewBox="0 0 32 12" aria-hidden="true">
-                <path d="M0 6 H29 M24 1 L30 6 L24 11" fill="none"
-                      stroke="currentColor" stroke-width="1.1"
-                      stroke-linecap="square" stroke-linejoin="miter"/>
-              </svg>
-            </button>
-          </form>
-          <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
-
-          <button class="contact-switch" id="to-message" type="button">
-            Have a project in mind? <span>Send us a message&nbsp;&rarr;</span>
+        <!-- default: primary "start a conversation" + newsletter -->
+        <div class="contact-default" id="contact-default">
+          <p class="contact-lead">Start a conversation</p>
+          <button class="contact-cta" id="to-message" type="button">
+            Send us a message <span aria-hidden="true">&rarr;</span>
           </button>
+          <p class="contact-call">or call <a href="tel:+919606165769">+91&nbsp;96061&nbsp;65769</a></p>
+
+          <div class="newsletter" id="newsletter">
+            <label class="notify-label" for="email">Follow the Journal</label>
+            <form class="form" id="form" novalidate>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="input"
+                placeholder="Your email"
+                autocomplete="email"
+                required
+                aria-describedby="form-msg">
+              <button type="submit" class="submit" aria-label="Subscribe">
+                <svg viewBox="0 0 32 12" aria-hidden="true">
+                  <path d="M0 6 H29 M24 1 L30 6 L24 11" fill="none"
+                        stroke="currentColor" stroke-width="1.1"
+                        stroke-linecap="square" stroke-linejoin="miter"/>
+                </svg>
+              </button>
+            </form>
+            <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+          </div>
         </div>
 
         <!-- opt-in: guided message dialogue -->
         <div class="convo" id="convo" hidden>
-          <button class="convo__leave" id="to-notify" type="button">&larr;&nbsp;Notify me instead</button>
+          <button class="convo__leave" id="to-notify" type="button">&larr;&nbsp;Back</button>
           <p class="convo__eyebrow">Start a conversation</p>
 
           <div class="convo__stage" id="convo-stage">
@@ -204,6 +209,6 @@
 
 <!-- EmailJS SDK — public key is safe to expose (read the note in script.js) -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="script.js?v=4"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>

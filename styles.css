@@ -217,6 +217,19 @@ ul {
   margin-right: -.20em
 }
 
+/* the launched headline uses longer words than "COMING / SOON",
+   so it needs a smaller size + tighter tracking to fit the column.
+   Higher specificity (.title.title--launched) so it also wins over
+   the mobile .title override further down the file. */
+.title.title--launched {
+  font-size: clamp(1.5rem, 6.2vw, 3.4rem);
+  letter-spacing: .06em;
+}
+
+.title.title--launched .line {
+  margin-right: -.06em;
+}
+
 /* per-character reveal (chars injected by JS) */
 .title .char {
   display: inline-block;
@@ -268,22 +281,79 @@ ul {
 }
 
 /* both panels share a fade so switching between them is smooth */
-.notify,
+.contact-default,
 .contact .convo {
   transition: opacity .3s var(--ease), transform .4s var(--ease);
 }
 
-.notify.is-out,
+.contact-default.is-out,
 .contact .convo.is-out {
   opacity: 0;
   transform: translateY(8px);
   pointer-events: none;
 }
 
-/* ── notify (waitlist) ──────────────────────────────────── */
+/* ── contact default (launched): message CTA + newsletter ── */
 
-.notify {
+.contact-default {
   animation: fadeUp 1s var(--slow) 1.45s backwards;
+}
+
+.contact-lead {
+  font-size: clamp(.66rem, .8vw, .74rem);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: .85rem;
+}
+
+.contact-cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .55em;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+  font-weight: 200;
+  letter-spacing: .01em;
+  color: var(--ink);
+}
+
+.contact-cta span {
+  display: inline-block;
+  color: var(--ink-3);
+  transition: transform .35s var(--slow), color .35s var(--ease);
+}
+
+.contact-cta:hover span {
+  transform: translateX(6px);
+  color: var(--ink);
+}
+
+.contact-call {
+  margin-top: .8rem;
+  font-size: .8rem;
+  letter-spacing: .02em;
+  color: var(--ink-3);
+}
+
+.contact-call a {
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--ink-4);
+  padding-bottom: 1px;
+  transition: color .3s var(--ease), border-color .3s var(--ease);
+}
+
+.contact-call a:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.newsletter {
+  margin-top: clamp(1.8rem, 4vh, 2.6rem);
 }
 
 .notify-label {
@@ -392,9 +462,8 @@ ul {
   color: rgba(255, 140, 130, .9)
 }
 
-.notify.is-done .form,
-.notify.is-done .notify-label,
-.notify.is-done .contact-switch {
+.newsletter.is-done .form,
+.newsletter.is-done .notify-label {
   opacity: 0;
   transform: translateY(-6px);
   pointer-events: none;

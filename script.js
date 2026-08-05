@@ -67,7 +67,10 @@
     text.split('').forEach(function (ch) {
       var span = document.createElement('span');
       span.className = 'char';
-      span.textContent = ch;
+      // a literal space collapses to ~0 width once the char becomes
+      // inline-block (needed for the per-letter rise animation) —
+      // use a non-breaking space so word gaps in the headline render
+      span.textContent = (ch === ' ') ? ' ' : ch;
       span.style.setProperty('--d', (260 + index * 42 + li * 80) + 'ms');
       frag.appendChild(span);
       index++;
@@ -77,7 +80,7 @@
   });
 
   var title = document.querySelector('.title');
-  if (title) title.setAttribute('aria-label', 'Coming soon');
+  if (title) title.setAttribute('aria-label', 'Architecture & Interiors');
 
   /* ── 2. Pointer parallax on the composition ──────────────
      Subtle rotation only — the scene should feel like light
@@ -117,7 +120,7 @@
 
   /* 3a. Notify (launch waitlist) — a single email field. */
   (function () {
-    var box    = document.getElementById('notify');
+    var box    = document.getElementById('newsletter');
     var form   = document.getElementById('form');
     var email  = document.getElementById('email');
     var msg    = document.getElementById('form-msg');
@@ -139,7 +142,7 @@
     }
     function done() {
       box.classList.add('is-done');
-      say('Thank you. We’ll be in touch.', false);
+      say('Thanks — you’re on the list.', false);
       msg.style.marginTop = '0';
     }
 
@@ -154,7 +157,7 @@
       if (submit) submit.disabled = true;
       say('Sending…', false);
       emailjs.send(EMAILJS.serviceId, EMAILJS.templateId, {
-        email: value, name: 'Launch signup', message: 'Wants to be notified when the site launches.'
+        email: value, name: 'Journal subscriber', message: 'New Journal newsletter signup.'
       })
         .then(done)
         .catch(function () {
@@ -346,9 +349,9 @@
       });
     });
 
-    /* ── notify ⇄ dialogue toggle ── */
-    var notifyBox = document.getElementById('notify');
-    var toMessage = document.getElementById('to-message');
+    /* ── default ⇄ dialogue toggle ── */
+    var defaultBox = document.getElementById('contact-default');
+    var toMessage  = document.getElementById('to-message');
 
     function swap(hideEl, showEl, after) {
       hideEl.classList.add('is-out');
@@ -364,16 +367,14 @@
       }, 300);
     }
 
-    if (toMessage && notifyBox) {
+    if (toMessage && defaultBox) {
       toMessage.addEventListener('click', function () {
-        swap(notifyBox, convo, function () { activeInput().focus(); });
+        swap(defaultBox, convo, function () { activeInput().focus(); });
       });
     }
-    if (leaveBtn && notifyBox) {
+    if (leaveBtn && defaultBox) {
       leaveBtn.addEventListener('click', function () {
-        swap(convo, notifyBox, function () {
-          var e = document.getElementById('email'); if (e) e.focus();
-        });
+        swap(convo, defaultBox, function () { if (toMessage) toMessage.focus(); });
       });
     }
 
