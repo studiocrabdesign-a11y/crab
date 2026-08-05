@@ -259,7 +259,7 @@ function renderPost(post) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=11">
 
 ${jsonLd.map(ld => `<script type="application/ld+json">\n${JSON.stringify(ld, null, 2)}\n</script>`).join('\n')}
 </head>

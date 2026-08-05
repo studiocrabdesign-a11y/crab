@@ -1177,8 +1177,14 @@ ul {
 }
 
 @media (max-width: 900px) {
+  /* minmax(0, 1fr), not bare 1fr — a bare 1fr track sizes to its
+     widest child's content width (e.g. a table with min-width),
+     which blows the whole page open horizontally on mobile. The
+     0 floor forces the track — and everything in it — to respect
+     the viewport, so overflow-x:auto on .post-table-wrap can do
+     its job and scroll just the table instead. */
   .post-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .post-sidebar {
