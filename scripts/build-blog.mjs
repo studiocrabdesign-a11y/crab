@@ -190,7 +190,7 @@ function renderPost(post) {
 
   const bodyHtml = post.bodyHtml.map(b => `      ${b}`).join('\n');
   const heroHtml = post.image
-    ? `    <img class="post-hero" src="${esc(assetPath(post.image))}" alt="">\n`
+    ? `    <img class="post-hero" src="${esc(assetPath(post.image))}" alt="${esc(post.title)}">\n`
     : '';
 
   const jsonLd = [{
