@@ -310,25 +310,25 @@ ul {
 .contact-cta {
   display: inline-flex;
   align-items: baseline;
-  gap: .55em;
+  gap: .5em;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
   font: inherit;
-  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
-  font-weight: 200;
+  font-size: clamp(.92rem, 1.05vw, 1.05rem);
+  font-weight: 300;
   letter-spacing: .01em;
   color: var(--ink);
 }
 
-.contact-cta span {
+.contact-cta .btn__arrow {
   display: inline-block;
   color: var(--ink-3);
   transition: transform .35s var(--slow), color .35s var(--ease);
 }
 
-.contact-cta:hover span {
+.contact-cta:hover .btn__arrow {
   transform: translateX(6px);
   color: var(--ink);
 }
@@ -364,20 +364,24 @@ ul {
   gap: clamp(.8rem, 1.6vw, 1.1rem);
 }
 
+/* small, quiet, secondary — currently just "Call us". "Send us a
+   message" stays a plain text link (see .contact-cta above) rather
+   than a filled block, to match the site's hairline/no-solid-blocks
+   aesthetic everywhere else. */
 .btn {
   position: relative;
   overflow: hidden;
   display: inline-flex;
   align-items: center;
   gap: .6em;
-  padding: .95rem 1.7rem;
+  padding: .7rem 1.3rem;
   border: 1px solid var(--ink-4);
   font: inherit;
-  font-size: .78rem;
+  font-size: .72rem;
   font-weight: 400;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--ink-2);
   background: transparent;
   cursor: pointer;
   transition: border-color .35s var(--ease), background-color .35s var(--ease), color .35s var(--ease);
@@ -403,7 +407,7 @@ ul {
   width: 22%;
   height: 100%;
   pointer-events: none;
-  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, .32), transparent);
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, .28), transparent);
   transform: skewX(-18deg);
   animation: btnShine 3.6s ease-in-out infinite;
 }
@@ -414,31 +418,10 @@ ul {
   100% { left: 130% }
 }
 
-/* primary: filled, the main call to action */
-.btn--primary {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--bg);
-}
-
-.btn--primary:hover {
-  background: rgba(255, 255, 255, .86);
-}
-
-/* the fill is bright, so its sweep needs to be a dark band instead
-   of a light one — a white-on-white shine would be invisible */
-.btn--primary::before {
-  background: linear-gradient(115deg, transparent, rgba(0, 0, 0, .16), transparent);
-}
-
-/* secondary: outline, for "Call us" */
 .btn--ghost:hover {
   border-color: var(--ink);
   background: rgba(255, 255, 255, .04);
-}
-
-.btn--ghost::before {
-  animation-delay: .7s;
+  color: var(--ink);
 }
 
 .newsletter {
