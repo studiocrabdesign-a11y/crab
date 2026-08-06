@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="styles.css?v=12">
 
 <!-- Structured data for search engines -->
 <script type="application/ld+json">
@@ -115,10 +115,14 @@
         <!-- default: primary "start a conversation" + newsletter -->
         <div class="contact-default" id="contact-default">
           <p class="contact-lead">Start a conversation</p>
-          <button class="contact-cta" id="to-message" type="button">
-            Send us a message <span aria-hidden="true">&rarr;</span>
-          </button>
-          <p class="contact-call">or call <a href="tel:+919606165769">+91&nbsp;96061&nbsp;65769</a></p>
+          <div class="cta-row">
+            <button class="btn btn--primary" id="to-message" type="button">
+              Send us a message <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+            </button>
+            <a class="btn btn--ghost" href="tel:+919606165769">
+              Call us
+            </a>
+          </div>
 
           <div class="newsletter" id="newsletter">
             <label class="notify-label" for="email">Follow the Journal</label>

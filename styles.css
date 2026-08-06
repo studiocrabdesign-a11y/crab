@@ -352,6 +352,95 @@ ul {
   border-color: var(--ink);
 }
 
+/* ── CTA buttons: "Send us a message" + "Call us" ───────────
+   Real button chrome (the old .contact-cta read as a text link,
+   not a button) plus a looping diagonal shine sweep so the pair
+   reads as the primary action on the page. */
+
+.cta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(.8rem, 1.6vw, 1.1rem);
+}
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: .6em;
+  padding: .95rem 1.7rem;
+  border: 1px solid var(--ink-4);
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 400;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color .35s var(--ease), background-color .35s var(--ease), color .35s var(--ease);
+}
+
+.btn__arrow {
+  display: inline-block;
+  transition: transform .35s var(--slow);
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(5px);
+}
+
+/* the sweep itself — a skewed light band drifting left to right,
+   then holding off-screen before it loops. Scoped to the button via
+   overflow:hidden above, so it never bleeds into the rest of the page. */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -35%;
+  width: 22%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, .32), transparent);
+  transform: skewX(-18deg);
+  animation: btnShine 3.6s ease-in-out infinite;
+}
+
+@keyframes btnShine {
+  0%   { left: -35% }
+  38%  { left: 130% }
+  100% { left: 130% }
+}
+
+/* primary: filled, the main call to action */
+.btn--primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.btn--primary:hover {
+  background: rgba(255, 255, 255, .86);
+}
+
+/* the fill is bright, so its sweep needs to be a dark band instead
+   of a light one — a white-on-white shine would be invisible */
+.btn--primary::before {
+  background: linear-gradient(115deg, transparent, rgba(0, 0, 0, .16), transparent);
+}
+
+/* secondary: outline, for "Call us" */
+.btn--ghost:hover {
+  border-color: var(--ink);
+  background: rgba(255, 255, 255, .04);
+}
+
+.btn--ghost::before {
+  animation-delay: .7s;
+}
+
 .newsletter {
   margin-top: clamp(1.8rem, 4vh, 2.6rem);
 }
